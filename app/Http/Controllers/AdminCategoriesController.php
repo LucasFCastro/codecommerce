@@ -2,6 +2,7 @@
 
 namespace CodeCommerce\Http\Controllers;
 
+use CodeCommerce\Category;
 use Illuminate\Http\Request;
 
 use CodeCommerce\Http\Requests;
@@ -10,13 +11,29 @@ use CodeCommerce\Http\Controllers\Controller;
 class AdminCategoriesController extends Controller
 {
     /**
+     * @var Category
+     */
+    private $category;
+
+    /**
+     * AdminCategoriesController constructor.
+     * @param Category $category
+     */
+    public function __construct(Category $category)
+    {
+
+        $this->category = $category;
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return "Administração de categorias";
+        $categories = $this->category->all();
+        return view('category', compact('categories'));
     }
 
     /**
