@@ -37,16 +37,6 @@ class AdminCategoriesController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -54,7 +44,7 @@ class AdminCategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->category->save($request->all());
     }
 
     /**
@@ -65,18 +55,8 @@ class AdminCategoriesController extends Controller
      */
     public function show($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        $cateogy = $this->category->find($id);
+        return $cateogy->name;
     }
 
     /**
@@ -88,7 +68,7 @@ class AdminCategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->category->update($request->all(), $id);
     }
 
     /**
@@ -99,6 +79,6 @@ class AdminCategoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->category->delete($id);
     }
 }

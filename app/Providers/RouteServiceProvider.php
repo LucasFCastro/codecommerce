@@ -27,7 +27,8 @@ class RouteServiceProvider extends ServiceProvider
         //
 
         parent::boot($router);
-    }
+
+        $router->pattern('id', '[0-9]+');    }
 
     /**
      * Define the routes for the application.

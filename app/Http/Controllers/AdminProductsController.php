@@ -37,16 +37,6 @@ class AdminProductsController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -54,7 +44,8 @@ class AdminProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product= $this->product->save($request->all());
+
     }
 
     /**
@@ -65,19 +56,11 @@ class AdminProductsController extends Controller
      */
     public function show($id)
     {
-        //
+        $product= $this->product->find($id);
+        return $product->name;
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -88,7 +71,7 @@ class AdminProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->product->update($request->all(), $id);
     }
 
     /**
@@ -99,6 +82,6 @@ class AdminProductsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product= $this->product->delete($id);
     }
 }
