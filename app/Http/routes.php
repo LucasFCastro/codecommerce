@@ -15,9 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix'=>'admin', 'as' => 'admin'], function(){
+Route::group(['prefix'=>'admin', 'as' => 'admin.'], function(){
 
-    Route::group(['prefix'=>'categories', 'as'=>'categories'], function(){
+    Route::group(['prefix'=>'categories', 'as'=>'categories.'], function(){
         Route::get('',          ['as'=>'index', 'uses'=> 'AdminCategoriesController@index']);
         Route::post('',         ['as'=>'store', 'uses'=> 'AdminCategoriesController@store']);
         Route::get('/{id}',     ['as'=>'update', 'uses'=> 'AdminCategoriesController@show']);
@@ -25,7 +25,7 @@ Route::group(['prefix'=>'admin', 'as' => 'admin'], function(){
         Route::delete('/{id}',  ['as'=>'delete', 'uses'=> 'AdminCategoriesController@delete']);
     });
 
-    Route::group(['prefix'=>'products', 'as'=>'products'], function(){
+    Route::group(['prefix'=>'products', 'as'=>'products.'], function(){
         Route::get('',          ['as'=>'index', 'uses'=> 'AdminProductsController@index']);
         Route::post('',         ['as'=>'store', 'uses'=> 'AdminProductsController@store']);
         Route::get('/{id}',     ['as'=>'update', 'uses'=> 'AdminProductsController@show']);
